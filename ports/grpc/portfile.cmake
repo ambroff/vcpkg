@@ -13,15 +13,12 @@ endif()
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO grpc/grpc
-    REF 08fd59f039c7cf62614ab7741b3f34527af103c7
-    SHA512 a1200e0df981f69f9831425a5187dcc843d9eadee1663150cd3aa10d388ae0693ac6aa57760d7047ce1e6c55a15339d1db2f1b6e25f84c76ad97e0b48706e2c4
+    REF v1.10.1
+    SHA512 2221d902c60eada6dd1547a63d26bd3b30cb6710247b5e48523bacde498a3691cc177f1dbe9db8a007b8ae341a5b0c8ec999539e26a9bcff480a8d0b02140997
     HEAD_REF master
     PATCHES
-        00001-fix-uwp.patch
-        00002-static-linking-in-linux.patch
-        00003-undef-base64-macro.patch
-        00004-link-gdi32-on-windows.patch
-        00005-fix-uwp-error.patch
+        ${CMAKE_CURRENT_LIST_DIR}/disable-csharp-ext.patch
+        ${CMAKE_CURRENT_LIST_DIR}/fix-uwp.patch
 )
 
 if(VCPKG_CMAKE_SYSTEM_NAME STREQUAL "WindowsStore" OR VCPKG_TARGET_ARCHITECTURE STREQUAL "arm" OR VCPKG_TARGET_ARCHITECTURE STREQUAL "arm64")
